@@ -1,0 +1,48 @@
+Clusters:
+- Input:
+    Kafka:
+      Name: gostash
+      Brokers:
+        - "192.168.31.106:9092"
+      Topics:
+        - k8slog
+      Group: pro
+      Consumers: 1
+  Filters:
+    - Action: drop
+      Conditions:
+        - Key: k8s_container_name
+          Value: "-rpc"
+          Type: contains
+        - Key: level
+          Value: info
+          Type: match
+          Op: and
+    - Action: remove_field
+      Fields:
+        - message
+        - _source
+        - _type
+        - _score
+        - _id
+        - "@version"
+        - topic
+        - index
+        - beat
+        - docker_container
+        - offset
+        - prospector
+        - source
+        - stream
+    - Action: transfer
+      Field: message
+      Target: data
+  Output:
+    Clickhouse:
+      Addr:
+        - "127.0.0.1:9000"
+      Auth:
+        Database: default
+        Username: default
+        Password:
+      Table: example
