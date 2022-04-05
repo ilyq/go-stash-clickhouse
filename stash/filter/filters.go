@@ -1,6 +1,6 @@
 package filter
 
-import "github.com/kevwan/go-stash/stash/config"
+import "github.com/ilyq69/go-stash/stash/config"
 
 const (
 	filterDrop         = "drop"

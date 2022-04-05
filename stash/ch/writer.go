@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/ClickHouse/clickhouse-go/v2"
-	"github.com/kevwan/go-stash/stash/config"
-	"github.com/tal-tech/go-zero/core/executors"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/ilyq69/go-stash/stash/config"
+	"github.com/zeromicro/go-zero/core/executors"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type (
